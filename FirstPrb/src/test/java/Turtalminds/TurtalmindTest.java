@@ -44,8 +44,9 @@ public class TurtalmindTest extends Base{
 		}
 		//select Annual Income
 		//tp.selectIncome().click();
-		//tp.SelectIncomeFromDD();
+		tp.SelectIncomeFromDD("15 Lac+");
 		tp.selectNextButton().click();
+		tp.selectSumAssuredAmount("₹90 Lakhs");
 		tp.selectNextButton().click();
 		tp.enterName().sendKeys("Sachin Barkade");
 		tp.enterMobile().sendKeys("9860097324");

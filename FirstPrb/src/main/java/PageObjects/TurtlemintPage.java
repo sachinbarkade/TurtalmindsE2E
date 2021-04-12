@@ -97,13 +97,45 @@ public WebDriver driver;
 	{
 		return driver.findElement(clickOnIncome);
 	}
-	public void SelectIncomeFromDD()
+	public void SelectIncomeFromDD(String income)
 	{
-		//List<WebElement> dropdownItems = driver.findElements(By.xpath("//span[@style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"]"));
-		//dropdownItems.get(3).click(); // click on first Dropdown, for example
-		driver.findElement(By.xpath("//div[@class='sc-eqIVtm cCBzET']")).click();
-		String s = ((JavascriptExecutor)driver).executeScript(" return document.getElementById('Id').value").toString();
-        System.out.println(s);
+		driver.findElement(clickOnIncome).click();
+		String pagso = driver.getPageSource();
+		System.out.println(pagso);
+		List<WebElement> list = driver
+		.findElements(By.xpath("//div[@class='sc-hzDkRC dDbdhS']//ul/descendant::li[@class]"));
+		System.out.println("Total no of suggessions " + list.size());
+
+		for (int i = 0; i <= list.size(); i++) {
+		System.out.println(list.get(i).getText());
+
+		if (list.get(i).getText().contains(income)) {
+
+		list.get(i).click();
+
+		break;
+		}
+		}
+	}
+	public void selectSumAssuredAmount(String Amount)
+	{
+		driver.findElement(By.cssSelector(".sc-eqIVtm.cCBzET")).click();
+		String pagso = driver.getPageSource();
+		System.out.println(pagso);
+		List<WebElement> list = driver
+		.findElements(By.xpath("//div[@class='sc-hzDkRC dDbdhS']//ul/descendant::li[@class]"));
+		System.out.println("Total no of suggessions " + list.size());
+
+		for (int i = 0; i <= list.size(); i++) {
+		System.out.println(list.get(i).getText());
+
+		if (list.get(i).getText().contains(Amount)) {
+
+		list.get(i).click();
+
+		break;
+		}
+		}
 	}
 	public WebElement selectNextButton()
 	{
